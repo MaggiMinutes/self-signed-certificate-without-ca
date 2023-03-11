@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PATH="/etc/certs"
 SERVER_KEY="$PATH/server.key"
 SERVER_CSR="$PATH/server.csr"
@@ -49,7 +51,6 @@ if [ $? -ne 0 ] ; then
    echo "ERROR: Failed to generate $SERVER_CSR"
    exit 1
 fi
-
 
 echo "Generating self signed certificate"
 $OPENSSL_CMD x509 -req -days 3650 -in $SERVER_CSR -signkey $SERVER_KEY -out $SERVER_CRT 2>/dev/null
